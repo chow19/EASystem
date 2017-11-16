@@ -1,9 +1,9 @@
 create database EA;
 use ea;
-create table account(
+create table accounts(
 	id int not null primary key auto_increment,
     username varchar(20) unique not null,
-    passwork varchar(20) not null
+    passwords varchar(20) not null
 )default charset=utf8,auto_increment=10000;
 
 create table role(
@@ -16,7 +16,7 @@ create table account_role(
 	id int not null primary key auto_increment,
     account_id int not null,
     role_id int not null,
-    foreign key(account_id) references account(id) on delete cascade on update cascade,
+    foreign key(account_id) references accounts(id) on delete cascade on update cascade,
     foreign key(role_id) references role(id) on delete cascade on update cascade
 )default charset=utf8;
 
@@ -30,7 +30,7 @@ create table user_info(
     eamil varchar(45) not null,
     image varchar(45) default 'default',
     information varchar(100),
-    foreign key(account_id) references account(id) on delete cascade on update cascade
+    foreign key(account_id) references accounts(id) on delete cascade on update cascade
 )default charset=utf8;
 
 create table classroom(
@@ -47,10 +47,8 @@ create table class(
     superior_limit int default 120,
     credit int default 2,
     description varchar(45),
-    foreign key(teacher_id) references account(id) on delete cascade on update cascade
-)default charset=utf8;
-
-alter table class auto_increment=10000;
+    foreign key(teacher_id) references accounts(id) on delete cascade on update cascade
+)default charset=utf8,auto_increment=10000;
 
 create table class_classroom(
     classroom int not null,
@@ -71,7 +69,7 @@ create table performance(
     credit int not null,
     primary key(class_id,student_id),
     foreign key(class_id) references class(id) on delete cascade on update cascade,
-    foreign key(student_id) references account(id) on delete cascade on update cascade
+    foreign key(student_id) references accounts(id) on delete cascade on update cascade
 )default charset=utf8;
 
 create table user_log(
@@ -81,6 +79,78 @@ create table user_log(
     description varchar(45)
 )default charset=utf8;
 
-grant all privileges on ea.* to 'eamanger'@'%';
+grant all privileges on ea.* to 'eamanager'@'%';
 
-set password for 'eamanger'@'%'=password('eaea');
+set password for 'eamanager'@'%'=password('eaea');
+
+create table classorder(
+	id int not null primary key,
+    classtime varchar(20) not null
+)default charset=utf8;
+
+drop table class_classroom;
+
+create table class_classroom(
+    class_date date not null,
+    class_order int not null,
+    classroom int not null,
+    class int not null,
+    primary key(class_date,class_order,classroom),
+    foreign key(class_order) references classorder(id) on delete cascade on update cascade,
+    foreign key(classroom) references classroom(id) on delete cascade on update cascade,
+    foreign key(class) references class(id) on delete cascade on update cascade
+)default charset=utf8;
+
+insert into role (role_name,description) values
+('student','this is a student.'),
+('teacher','this is a teacher'),
+('manager','this is a manager');
+
+insert into accounts (username,passwords) values
+('chow','123456'),
+('alber','654321'),
+('choose','123654'),
+('jun','654123');
+
+insert into account_role (account_id,role_id) values
+(10000,1),
+(10001,1),
+(10002,2),
+(10003,3); 
+
+insert into accounts (username,passwords) values
+('anna','123321');
+
+insert into account_role (account_id,role_id) values
+(10004,2);
+
+insert into class (teacher_id,classname) values
+(10002,'高等数学'),
+(10004,'大学英语');
+
+alter table classroom change name roomname varchar(45) not null unique key;
+
+insert into classroom (roomname) values
+('博知101'),
+('博知102'),
+('博知103');
+
+insert into classorder (id,classtime) values
+(1,'8:00~8:50'),
+(2,'9:00~9:50'),
+(3,'10:10~11:00'),
+(4,'11:00~11:50'),
+(5,'13:30~14:20'),
+(6,'14:30~15:20'),
+(7,'15:30~16:20'),
+(8,'16:30~17:20'),
+(9,'18:30~19:20'),
+(10,'19:30~20:20');
+
+alter table performance change final final int;
+
+alter table performance change credit credit int;
+
+insert into performance (class_id,student_id) values
+(10000,10000),
+(10001,10001);

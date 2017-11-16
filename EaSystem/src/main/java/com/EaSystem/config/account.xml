@@ -3,6 +3,6 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.EaSystem.mapper.IAccountService">
 	<select id="getAll" resultType="com.EaSystem.beans.Account">
-		select * from account
+		select * from accounts
 	</select>
 </mapper>
