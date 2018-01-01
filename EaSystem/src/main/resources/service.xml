@@ -22,4 +22,9 @@
         <!-- 自动扫描mapping.xml文件 -->  
 		<property name="mapperLocations" value="classpath:com/EaSystem/config/*.xml"></property>
 	</bean>
+	
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">  
+        <property name="basePackage" value="com.EaSystem.mapper" />  
+        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"></property>  
+    </bean> 
 </beans>

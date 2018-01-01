@@ -1,6 +1,6 @@
 package com.EaSystem.beans;
 
-public class Class {
+public class Course {
 	int id;
 	int teacher_id;
 	String classname;

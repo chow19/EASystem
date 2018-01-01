@@ -3,6 +3,7 @@ package com.EaSystem.beans;
 public class Account {
 	 int id;
 	 String username;
+	 String passwork;
 	 public int getId() {
 		return id;
 	}
@@ -21,5 +22,5 @@ public class Account {
 	public void setPasswork(String passwork) {
 		this.passwork = passwork;
 	}
-	String passwork;
+	
 }

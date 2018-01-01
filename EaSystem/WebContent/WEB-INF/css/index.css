@@ -35,7 +35,7 @@ img.bg {
      100% { left: 0; }
  }
 
- #L&R {
+ #LR{
  	position: absolute;
     top: 50%;
     left: 50%;
@@ -48,9 +48,9 @@ img.bg {
     -ms-transform: translate(-50%, -50%);
     -o-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
-    z-index:9000
+    z-index:9000;
  }
- #L&R span{
+ #LR span{
 	margin: 20px;
 	display: block;	
  }
@@ -80,12 +80,13 @@ img.bg {
     box-shadow:10px 10px 5px black;
     padding:20px;
     border-radius: 10px;
+    display: none;
     -webkit-transform: translate(-50%, -50%);
     -moz-transform: translate(-50%, -50%);
     -ms-transform: translate(-50%, -50%);
     -o-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
-    z-index:9002
+    z-index:9001
  }
  #register span{
  	dispaly: block;

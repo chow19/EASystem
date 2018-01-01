@@ -154,3 +154,16 @@ alter table performance change credit credit int;
 insert into performance (class_id,student_id) values
 (10000,10000),
 (10001,10001);
+
+create table calendar(
+	yearName int not null,
+    weekName int not null,
+    dayofMonday date,
+    dayofTuesday date,
+    dayofWednesday date,
+    dayofThursday date,
+    dayofFriday date,
+    dayofSaturday date,
+    dayofSunday date,
+    primary key(yearName,weekName)
+)default charset=utf8;

@@ -5,4 +5,8 @@
 	<select id="getAll" resultType="com.EaSystem.beans.Account">
 		select * from accounts
 	</select>
+	
+	<select id="Login" resultType="com.EaSystem.beans.Account">
+		select * from accounts where username=#{param1} and passwords=#{param2}
+	</select>
 </mapper>
