@@ -167,3 +167,31 @@ create table calendar(
     dayofSunday date,
     primary key(yearName,weekName)
 )default charset=utf8;
+
+insert into user_info values
+(10000,'周','小良','M','1994-10-24','13923323333','z@qdu.com','',''),
+(10004,'安','娜','F','1979-11-18','13666666666','anna@qdu.com','',''),
+(10003,'孙','晴','M','1975-06-05','+8207566123423','sun@niit.com','','');
+
+update user_info set image='man1.jpg' where account_id=10000 or account_id=10003;
+update user_info set image='woman1.jpg' where account_id=10004;
+
+ALTER TABLE `ea`.`user_info` CHANGE COLUMN `sex` `sex` ENUM('M', 'F', 'N') NULL DEFAULT 'M' ;
+
+ALTER TABLE `ea`.`performance` CHANGE COLUMN `final` `final_scores` INT(11) NULL DEFAULT NULL ;
+
+ALTER TABLE `ea`.`class_classroom` CHANGE COLUMN `classroom` `classroom` VARCHAR(20) NOT NULL ;
+
+ALTER TABLE `ea`.`class_classroom` DROP FOREIGN KEY `class_classroom_ibfk_2`;
+ALTER TABLE `ea`.`class_classroom` CHANGE COLUMN `classroom` `classroom` VARCHAR(20) NOT NULL ;
+alter table class_classroom add  foreign key(classroom) references classroom(roomname) on delete cascade on update cascade;
+
+ALTER TABLE `ea`.`class_classroom` DROP FOREIGN KEY `class_classroom_ibfk_3`;
+ALTER TABLE `ea`.`class_classroom` CHANGE COLUMN `class` `class_id` INT(11) NOT NULL ;
+ALTER TABLE `ea`.`class_classroom` ADD CONSTRAINT `class_classroom_ibfk_3`  FOREIGN KEY (`class_id`)  REFERENCES `ea`.`class` (`id`)  ON DELETE CASCADE  ON UPDATE CASCADE;
+
+insert into class_classroom values
+('2017-08-21',1,'博知101',10000),
+('2017-08-23',3,'博知102',10000),
+('2017-08-27',5,'博知103',10000),
+('2017-08-29',1,'博知101',10000);

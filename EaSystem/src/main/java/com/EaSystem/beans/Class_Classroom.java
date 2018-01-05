@@ -5,12 +5,12 @@ import java.sql.Date;
 public class Class_Classroom {
 	Date class_date;
 	int class_order;
-	int classroom;
-	int classid;
-	public int getClassroom() {
+	String classroom;
+	int class_id;
+	public String getClassroom() {
 		return classroom;
 	}
-	public void setClassroom(int classroom) {
+	public void setClassroom(String classroom) {
 		this.classroom = classroom;
 	}
 	public Date getClass_date() {
@@ -25,10 +25,11 @@ public class Class_Classroom {
 	public void setClass_order(int class_order) {
 		this.class_order = class_order;
 	}
-	public int getClassid() {
-		return classid;
+	public int getClass_id() {
+		return class_id;
 	}
-	public void setClassid(int classid) {
-		this.classid = classid;
-	} 
+	public void setClass_id(int class_id) {
+		this.class_id = class_id;
+	}
+
 }

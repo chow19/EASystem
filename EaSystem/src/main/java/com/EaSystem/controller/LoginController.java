@@ -33,12 +33,12 @@ public class LoginController {
 	@Resource
 	private ICalendarofWeekService icalendarofweek;
 	
-	@RequestMapping(value="/login")
+	@RequestMapping()
 	public ModelAndView Login(String username, String pw,ModelMap model) {
 		Account account = ilogin.Login(username, pw);
 		ModelAndView modelandview;
 		if(account != null) {
-			modelandview = new ModelAndView("forward:/login/role");
+			modelandview = new ModelAndView("redirect:/login/role");
 			model.addAttribute("Account", account);
 		}else {
 			modelandview = new ModelAndView("index");
@@ -53,13 +53,13 @@ public class LoginController {
 			Account_role account_role=iaccount_role.getAccount_role(account.getId());
 			switch (account_role.getRole_id()) {
 			case 3:
-				modelandview = new ModelAndView("forward:/manager/home");
+				modelandview = new ModelAndView("redirect:/manager");
 				break;
 			case 2:
-				modelandview = new ModelAndView("forward:/teachers/home");
+				modelandview = new ModelAndView("redirect:/teachers");
 				break;
 			default:
-				modelandview = new ModelAndView("homeofStudents");
+				modelandview = new ModelAndView("redirect:/students");
 				break;
 			}
 		}else {

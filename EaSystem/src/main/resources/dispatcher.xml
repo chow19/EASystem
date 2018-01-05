@@ -12,11 +12,23 @@
 	<context:annotation-config />
 	<!-- 定义静态资源 -->
 	<mvc:resources location="/WEB-INF/css/" mapping="/css/**"></mvc:resources>
+	<mvc:resources location="/WEB-INF/css/" mapping="/**/css/**"></mvc:resources>
 	<mvc:resources location="/WEB-INF/img/" mapping="/img/**"></mvc:resources>
+	<mvc:resources location="/WEB-INF/img/" mapping="/**/img/**"></mvc:resources>
+	<mvc:resources location="/WEB-INF/xls/" mapping="/xls/**"></mvc:resources>
+	<mvc:resources location="/WEB-INF/xls/" mapping="/**/xls/**"></mvc:resources>
 	<!-- 视图解析器 -->
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix" value="/WEB-INF/jsp/"></property>
 		<property name="suffix" value=".jsp"></property>
 	</bean>
+	
+	<!-- 上传文件的设置 ，maxUploadSize=-1，表示无穷大。uploadTempDir为上传的临时目录 -->  
+   <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <property name="defaultEncoding" value="utf-8" />
+        <property name="maxUploadSize" value="5400000"/>
+        <property name="maxInMemorySize" value="4096"/>
+		<property name="uploadTempDir" value="fileUpload/temp"/>
+    </bean>
 	
 </beans>

@@ -9,4 +9,8 @@
 	<select id="getTeachersCourses" resultType="com.EaSystem.beans.Course">
 		select * from class where teacher_id=#{param1}
 	</select>
+	
+	<select id="getCourse" resultType="com.EaSystem.beans.Course">
+		select * from class where id=#{param1}
+	</select>
 </mapper>

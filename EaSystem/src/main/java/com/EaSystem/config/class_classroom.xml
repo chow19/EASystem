@@ -5,4 +5,8 @@
 	<select id="getAll" resultType="com.EaSystem.beans.Class_Classroom">
 		select * from class_classroom
 	</select>
+	
+	<select id="getClassandClassroom" resultType="com.EaSystem.beans.Class_Classroom">
+		select * from class_classroom where class_id=#{param1}
+	</select>
 </mapper>

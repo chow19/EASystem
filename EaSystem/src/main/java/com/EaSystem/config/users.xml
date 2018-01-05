@@ -5,4 +5,13 @@
 	<select id="getAll" resultType="com.EaSystem.beans.Users">
 		select * from user_info
 	</select>
+	
+	<select id="getUser" resultType="com.EaSystem.beans.Users">
+		select * from user_info where account_id = #{param1}
+	</select>
+
+	<update id="updateinfo">
+		update user_info set firstname=#{param1}, lastname=#{param2}, sex=#{param3}, birth=#{param4},
+							 phonenumber=#{param5}, eamil=#{param6} where account_id=#{param7}
+	</update>
 </mapper>

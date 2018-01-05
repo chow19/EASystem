@@ -4,7 +4,7 @@
 <head>
 	<meta http-equiv="Conten-Type" content="text/html; charset=UTF-8" ></meta>
 	<title>课程管理系统</title>
-	<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/index.css">
+	<link rel="stylesheet" type="text/css" href="css/index.css">
 	<%
 		String username = (String)request.getSession().getAttribute("username");
 	%>
@@ -12,7 +12,7 @@
 
 <body>
 	<div id="LR">
-		<form action="<%=request.getContextPath() %>/login\login" method="post">
+		<form action="<%=request.getContextPath() %>/login" method="post">
 			<span class="head">登录</span>
 			<span>
 				<label for="username">用户名</label>

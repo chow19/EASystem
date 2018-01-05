@@ -12,7 +12,7 @@
 	
 	<bean id="ds" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
-		<property name="url" value="jdbc:mysql://localhost:3306/ea?useSSL=false" />
+		<property name="url" value="jdbc:mysql://localhost:3306/ea?useUnicode=true&amp;characterEncoding=UTF-8" />
 		<property name="username" value="eamanager"></property>
 		<property name="password" value="eaea"></property>
 	</bean>
@@ -27,4 +27,6 @@
         <property name="basePackage" value="com.EaSystem.mapper" />  
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"></property>  
     </bean> 
+    
+    
 </beans>

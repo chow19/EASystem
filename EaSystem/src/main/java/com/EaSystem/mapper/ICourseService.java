@@ -10,4 +10,6 @@ public interface ICourseService {
 	public List<Course> getAll();
 	
 	public List<Course> getTeachersCourses(@Param("teachersID")int teachersID);
+	
+	public Course getCourse(@Param("id")int id);
 }

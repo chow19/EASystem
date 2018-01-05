@@ -28,7 +28,7 @@ public class ManagerController {
 	@Resource
 	private ICalendarofWeekService icalendarofweek;
 	
-	@RequestMapping(value="/home")
+	@RequestMapping()
 	public ModelAndView getManagerHome(@ModelAttribute("Account")Account account,ModelMap model) {
 		ModelAndView modelandview = new ModelAndView("homeofManagers");
 		if(account != null) {
@@ -73,7 +73,7 @@ public class ManagerController {
 					}
 				}
 			}
-			return "forward:/login/role";
+			return "redirect:/login/role";
 		}
 	}
 	@RequestMapping(value="/managerUpdateData")

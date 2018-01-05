@@ -7,6 +7,9 @@
 <title>ManagersPage:${account.username }</title>
 </head>
 <body>
+	<div id="personalDiv">
+		<a href="<%=request.getContextPath() %>/presonal">${account.username }</a>
+	</div>
 	<div>
 		<p>本学期时间为${beginDate }&nbsp; -- &nbsp;${endDate }</p>
 	</div>
