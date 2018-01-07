@@ -20,6 +20,6 @@
 	</update>
 	
 	<insert id="addPerformamce">
-		insert into performance values(#{param1},#{param2},0,null,null,null,null)
+		insert into performance values(#{param1},#{param2},"0",null,null,null,null)
 	</insert>
 </mapper>

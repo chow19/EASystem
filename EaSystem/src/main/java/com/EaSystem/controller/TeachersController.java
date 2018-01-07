@@ -13,9 +13,6 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.poi.hssf.usermodel.HSSFCell;
-import org.apache.poi.hssf.usermodel.HSSFRow;
-import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -31,7 +28,7 @@ import com.EaSystem.beans.Account;
 import com.EaSystem.beans.CalendarofWeek;
 import com.EaSystem.beans.Course;
 import com.EaSystem.beans.Performance;
-import com.EaSystem.java.HssCellGetValueUtil;
+import com.EaSystem.java.DataListUtil;
 import com.EaSystem.java.POIUtil;
 import com.EaSystem.mapper.ICalendarofWeekService;
 import com.EaSystem.mapper.ICourseService;
@@ -214,61 +211,20 @@ public class TeachersController {
 			try {
 				InputStream inputStream = xlsfile.getInputStream(); 			
 				HSSFWorkbook hssfWorkbook = new HSSFWorkbook(inputStream);
-				List<Map<String, Integer>> dataList = new ArrayList<>();
-				Map<String, Integer> dataItem = null;
-				HSSFCell hssfCell = null;
-				for (int numSheet = 0; numSheet < hssfWorkbook.getNumberOfSheets(); numSheet++) {
-					HSSFSheet hssfSheet = hssfWorkbook.getSheetAt(numSheet);
-		            if (hssfSheet == null) {
-		                continue;
-		            }
-		         // 循环行Row
-		            for (int rowNum = 1; rowNum <= hssfSheet.getLastRowNum(); rowNum++) {
-		            	HSSFRow hssfRow = hssfSheet.getRow(rowNum);
-		                if (hssfRow == null) {
-		                    continue;
-		                }
-		                dataItem = new HashMap<>();
-		             // 循环列Cell
-		                hssfCell = hssfRow.getCell(0);
-		                if (hssfCell == null) {
-		                    continue;
-		                }
-		                dataItem.put("KH",(int)Float.parseFloat(HssCellGetValueUtil.getValue(hssfCell)));
-		                hssfCell = hssfRow.getCell(1);
-		                if (hssfCell == null) {
-		                    continue;
-		                }
-		                dataItem.put("XH", (int)Float.parseFloat(HssCellGetValueUtil.getValue(hssfCell)));
-		                hssfCell = hssfRow.getCell(2);
-		                if (hssfCell == null) {
-		                    continue;
-		                }
-		                dataItem.put("RCF", (int)Float.parseFloat(HssCellGetValueUtil.getValue(hssfCell)));
-		                hssfCell = hssfRow.getCell(3);
-		                if (hssfCell == null) {
-		                    continue;
-		                }
-		                dataItem.put("KSF", (int)Float.parseFloat(HssCellGetValueUtil.getValue(hssfCell)));
-		                hssfCell = hssfRow.getCell(4);
-		                if (hssfCell == null) {
-		                    continue;
-		                }
-		                dataItem.put("ZHF", (int)Float.parseFloat(HssCellGetValueUtil.getValue(hssfCell)));
-		                hssfCell = hssfRow.getCell(5);
-		                if (hssfCell == null) {
-		                    continue;
-		                }
-		                dataItem.put("XF", (int)Float.parseFloat(HssCellGetValueUtil.getValue(hssfCell)));
-		                
-		                dataList.add(dataItem);
-		            }
-		            for(int i=0, lenght=dataList.size();i<lenght;i++) {
-		            	iperformance.changePerForForm(dataList.get(i).get("KH"), dataList.get(i).get("XH"), 
-		            								dataList.get(i).get("RCF"), dataList.get(i).get("KSF"), 
-		            								dataList.get(i).get("ZHF"), dataList.get(i).get("XF"));
-		            }
-				}
+				List<String> dataKey = new ArrayList<>();
+				dataKey.add("KH");
+				dataKey.add("XH");
+				dataKey.add("RCF");
+				dataKey.add("KSF");
+				dataKey.add("ZHF");
+				dataKey.add("XF");
+				int linenum = 6;
+				List<Map<String, Integer>> dataList = DataListUtil.getDataList(hssfWorkbook, linenum, dataKey);
+	            for(int i=0, lenght=dataList.size();i<lenght;i++) {
+	            	iperformance.changePerForForm(dataList.get(i).get("KH"), dataList.get(i).get("XH"), 
+	            								dataList.get(i).get("RCF"), dataList.get(i).get("KSF"), 
+	            								dataList.get(i).get("ZHF"), dataList.get(i).get("XF"));
+	            }
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
