@@ -28,6 +28,18 @@ public class PerInformationController {
 	public ModelAndView getPerInfor(@ModelAttribute("Account")Account account, ModelMap model) {
 		ModelAndView modelAndView = new ModelAndView("personalInformation");
 		Users users = iusers.getUser(account.getId());
+		if(users==null) {
+			users = new Users();
+			users.setAccount_id(account.getId());
+			users.setBirth(new java.sql.Date(2017));
+			users.setEamil("none");
+			users.setFirstname("none");
+			users.setImage("deafult.jpg");
+			users.setInformation("none");
+			users.setLastname("none");
+			users.setPhonenumber("none");
+			users.setSex("none");
+		}
 		modelAndView.addObject("account", account);
 		modelAndView.addObject("perInfor", users);
 		return modelAndView;
@@ -54,7 +66,11 @@ public class PerInformationController {
 			cfirstname = new String(cfirstname.getBytes("UTF-8"),"UTF-8");
 			clastname = new String(clastname.getBytes("UTF-8"),"UTF-8");
 			Date cbirthdate = DateUtils.parseDate(cbirth, DATE_FORMAT);
-			iusers.updateinfo(cfirstname, clastname, csex, cbirthdate, cphonenumber, cemail, account_id);
+			if(iusers.getUser(account_id)!=null) {
+				iusers.updateinfo(cfirstname, clastname, csex, cbirthdate, cphonenumber, cemail, account_id);
+			}else {
+				iusers.insertinfo(cfirstname, clastname, csex, cbirthdate, cphonenumber, cemail, account_id);
+			}
 		}catch (Exception e) {
             e.printStackTrace();
         }

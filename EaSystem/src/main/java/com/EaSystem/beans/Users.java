@@ -12,6 +12,17 @@ public class Users {
 	String eamil;
 	String image;
 	String information;
+	/*public Users(int id){
+		account_id=id;
+		firstname="none";
+		lastname="none";
+		sex="none";
+		birth=new Date();
+		phonenumber="none";
+		eamil="none";
+		image="none";
+		information="none";
+	}*/
 	public int getAccount_id() {
 		return account_id;
 	}

@@ -27,6 +27,4 @@
         <property name="basePackage" value="com.EaSystem.mapper" />  
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"></property>  
     </bean> 
-    
-    
 </beans>

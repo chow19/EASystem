@@ -13,4 +13,12 @@
 	<select id="getCourse" resultType="com.EaSystem.beans.Course">
 		select * from class where id=#{param1}
 	</select>
+	
+	<update id="addExit">
+		 update class set exist=exist+1 where id =#{param1};
+	</update>
+	
+	<update id="downExit">
+		 update class set exist=exist-1 where id =#{param1};
+	</update>
 </mapper>

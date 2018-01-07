@@ -23,10 +23,13 @@ import com.EaSystem.beans.CalendarofWeek;
 import com.EaSystem.beans.Class_Classroom;
 import com.EaSystem.beans.Course;
 import com.EaSystem.beans.Performance;
+import com.EaSystem.beans.Users;
+import com.EaSystem.mapper.IAccountService;
 import com.EaSystem.mapper.ICalendarofWeekService;
 import com.EaSystem.mapper.IClassClassroomService;
 import com.EaSystem.mapper.ICourseService;
 import com.EaSystem.mapper.IPerformanceService;
+import com.EaSystem.mapper.IUsersService;
 
 @Controller
 @SessionAttributes("Account")
@@ -44,6 +47,8 @@ public class StudentsController {
 	private ICalendarofWeekService icalendarofweek;
 	@Resource
 	private IClassClassroomService iclassclassroom;
+	@Resource
+	private IUsersService iusers;
 	
 	@RequestMapping()
 	public ModelAndView getStudentsHome(@ModelAttribute("Account")Account account, ModelMap model) {
@@ -60,12 +65,17 @@ public class StudentsController {
 			modelAndView.addObject("performancelist", performancelist);
 			Map<Integer,Course> coursesmap = new HashMap<>();
 			Map<Date,List<Class_Classroom>> class_classroommap= new HashMap<>();
+			Map<Integer,String> teachersnamemap = new HashMap<>();
 			if(!performancelist.isEmpty()) {
 				int courseID;
+				Course course;
 				List<Class_Classroom> class_Classroom;
 				for(int i=0,lenght=performancelist.size();i<lenght;i++) {
-					courseID=performancelist.get(i).getClass_id();
-					coursesmap.put(courseID, icourse.getCourse(courseID));
+					courseID = performancelist.get(i).getClass_id();
+					course = icourse.getCourse(courseID);
+					coursesmap.put(courseID, course);
+					Users users = iusers.getUser(course.getTeacher_id());
+					teachersnamemap.put(course.getTeacher_id(), users.getFirstname()+users.getLastname());
 					class_Classroom = iclassclassroom.getClassandClassroom(courseID);
 					if(!class_Classroom.isEmpty()) {
 						for(int j=0,jlenght=class_Classroom.size();j<jlenght;j++) {
@@ -80,6 +90,7 @@ public class StudentsController {
 				}
 			}
 			modelAndView.addObject("coursesmap", coursesmap);
+			modelAndView.addObject("teachersnamemap", teachersnamemap);
 			modelAndView.addObject("class_classroommap", class_classroommap);
 		}
 		
@@ -101,12 +112,17 @@ public class StudentsController {
 			modelAndView.addObject("performancelist", performancelist);
 			Map<Integer,Course> coursesmap = new HashMap<>();
 			Map<Date,List<Class_Classroom>> class_classroommap= new HashMap<>();
+			Map<Integer,String> teachersnamemap = new HashMap<>();
 			if(!performancelist.isEmpty()) {
 				int courseID;
+				Course course;
 				List<Class_Classroom> class_Classroom;
 				for(int i=0,lenght=performancelist.size();i<lenght;i++) {
-					courseID=performancelist.get(i).getClass_id();
-					coursesmap.put(courseID, icourse.getCourse(courseID));
+					courseID = performancelist.get(i).getClass_id();
+					course = icourse.getCourse(courseID);
+					coursesmap.put(courseID, course);
+					Users users = iusers.getUser(course.getTeacher_id());
+					teachersnamemap.put(course.getTeacher_id(), users.getFirstname()+users.getLastname());
 					class_Classroom = iclassclassroom.getClassandClassroom(courseID);
 					if(!class_Classroom.isEmpty()) {
 						for(int j=0,jlenght=class_Classroom.size();j<jlenght;j++) {
@@ -121,6 +137,7 @@ public class StudentsController {
 				}
 			}
 			modelAndView.addObject("coursesmap", coursesmap);
+			modelAndView.addObject("teachersnamemap", teachersnamemap);
 			modelAndView.addObject("class_classroommap", class_classroommap);
 		}
 		

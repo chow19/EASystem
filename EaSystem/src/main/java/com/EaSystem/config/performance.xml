@@ -18,4 +18,8 @@
 		update performance set daily_achievement=#{param3}, test_scores=#{param4}, final_scores=#{param5}, credit=#{param6}
 							where class_id=#{param1} and student_id=#{param2}
 	</update>
+	
+	<insert id="addPerformamce">
+		insert into performance values(#{param1},#{param2},0,null,null,null,null)
+	</insert>
 </mapper>

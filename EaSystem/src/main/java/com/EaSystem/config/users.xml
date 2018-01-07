@@ -14,4 +14,8 @@
 		update user_info set firstname=#{param1}, lastname=#{param2}, sex=#{param3}, birth=#{param4},
 							 phonenumber=#{param5}, eamil=#{param6} where account_id=#{param7}
 	</update>
+	
+	<insert id="insertinfo">
+		insert into user_info values(#{param7},#{param1},#{param2},#{param3},#{param4},#{param5},#{param6},null,null)
+	</insert>
 </mapper>

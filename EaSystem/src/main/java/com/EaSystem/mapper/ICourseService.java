@@ -12,4 +12,8 @@ public interface ICourseService {
 	public List<Course> getTeachersCourses(@Param("teachersID")int teachersID);
 	
 	public Course getCourse(@Param("id")int id);
+	
+	public int addExit(@Param("id")int id);
+	
+	public void downExit(@Param("id")int id);
 }

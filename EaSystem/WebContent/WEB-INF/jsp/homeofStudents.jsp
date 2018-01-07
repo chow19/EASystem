@@ -22,6 +22,7 @@
 	int toweek=Integer.parseInt(request.getAttribute("thisweek").toString());
  	List<Performance> performancelist = (List<Performance>)request.getAttribute("performancelist");
  	Map<Integer,Course> coursesmap = (Map<Integer,Course>)request.getAttribute("coursesmap");
+ 	Map<Integer,String> teachersnamemap =(Map<Integer,String>)request.getAttribute("teachersnamemap");
  	Map<Date,List<Class_Classroom>> class_classroommap = (Map<Date,List<Class_Classroom>>)request.getAttribute("class_classroommap");
  %>
  <body onload="coursesshow()">
@@ -335,6 +336,38 @@
 				<%} %>
 			<%} %>
 		</table>
+	</div>
+	
+	<div id="selectCourseDiv">
+		  <table>
+		  	<tr>
+		  		<th>
+		  			课程名
+		  		</th>
+		  		<th>
+		  			教师
+		  		</th>
+		  		<th>
+		  			简介
+		  		</th>
+		  	</tr>
+		  	<%if(!coursesmap.isEmpty()){ %>
+	  		<%for(int key: coursesmap.keySet()){ %>
+		  	<tr>
+		  		<td>
+					<%=coursesmap.get(key).getClassname() %>		  		
+		  		</td>
+		  		<td>
+					<%=teachersnamemap.get(coursesmap.get(key).getTeacher_id()) %>
+		  		</td>
+		  		<td>
+					<%=coursesmap.get(key).getDescription() %>
+		  		</td>
+		  	</tr>
+	  		<%} %>
+		  	<%} %>
+		  </table>
+		  <a href="<%=request.getContextPath() %>/coursesSelect">选课</a>
 	</div>
  </body>
  
