@@ -2,7 +2,7 @@ package com.EaSystem.beans;
 
 public class Classroom {
 	int id;
-	String name;
+	String roomname;
 	String description;
 	public int getId() {
 		return id;
@@ -10,11 +10,11 @@ public class Classroom {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public String getName() {
-		return name;
+	public String getRoomname() {
+		return roomname;
 	}
-	public void setName(String name) {
-		this.name = name;
+	public void setRoomname(String roomname) {
+		this.roomname = roomname;
 	}
 	public String getDescription() {
 		return description;

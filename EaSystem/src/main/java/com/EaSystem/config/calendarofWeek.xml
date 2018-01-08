@@ -13,4 +13,8 @@
 	<select id="getCalendarofWeek" resultType="com.EaSystem.beans.CalendarofWeek">
 		select * from calendar
 	</select>
+	
+	<select id="getWeek" resultType="com.EaSystem.beans.CalendarofWeek">
+		select * from calendar where weekName=#{param1}
+	</select>
 </mapper>

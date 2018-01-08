@@ -21,4 +21,8 @@
 	<update id="downExit">
 		 update class set exist=exist-1 where id =#{param1};
 	</update>
+	
+	<update id="updateDescription">
+		update class set description=#{param2} where id=#{param1}
+	</update>
 </mapper>

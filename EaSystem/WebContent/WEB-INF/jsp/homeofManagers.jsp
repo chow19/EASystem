@@ -10,6 +10,9 @@
 	<div id="personalDiv">
 		<a href="<%=request.getContextPath() %>/presonal">${account.username }</a>
 	</div>
+	<div id="exitDiv">
+		<a href="<%=request.getContextPath() %>/logout">退出</a>
+	</div>
 	<div>
 		<p>本学期时间为${beginDate }&nbsp; -- &nbsp;${endDate }</p>
 	</div>
@@ -36,6 +39,18 @@
 			</span> -->
 		</div>
 	</form>
+	
+	<div id="setClassCLassroomDiv">
+		<p>
+			<a href="<%=request.getContextPath() %>/ClassCLassroom/downloadExcel">下载空白课表</a>
+		</p>
+		<p>
+			<form action="<%=request.getContextPath() %>/ClassCLassroom/uploadExcel" method="post" enctype="multipart/form-data">  
+        		 文件1: <input type="file" name="xlsfile"/>&nbsp;&nbsp;
+        		 <input type="submit" value="上传课表">  
+			</form>
+		</p>
+	</div>
 </body>
 
 <script type="text/javascript">

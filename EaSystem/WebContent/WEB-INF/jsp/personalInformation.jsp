@@ -35,6 +35,7 @@
 		</p>
 		<p>
 			<button onclick="changeInfor()">修改</button>
+			<button onclick="changeInforImg()">修改头像</button>
 			<button onclick="backhome()">返回</button>
 		</p>
 	</div>
@@ -73,6 +74,14 @@
 			</span>
 		</form>
 	</div>
+	<div id="changeInforImgDiv">
+		<form id="cImgForm" action="<%=request.getContextPath() %>/presonal/changeInforImg" method="post">
+			<span class="closeSpan" onclick="clearShadow()">x</span>
+			<span class="head">修改头像</span>
+			 头像: <input type="file" name="jpgfile"/>&nbsp;&nbsp;
+        		 <input type="submit" value="上传jpg图片">  
+		</form>
+	</div>
 </body>
 <script type="text/javascript">
 	function backhome() {
@@ -82,6 +91,10 @@
 	function changeInfor() {
 		document.getElementById("shadowDiv").style.display = "block";
 		document.getElementById("changeDiv").style.display = "block";
+	}
+	function changeInforImg() {
+		document.getElementById("shadowDiv").style.display = "block";
+		document.getElementById("changeInforImgDiv").style.display = "block";
 	}
 	function submitChangeInfor() {
 		var form = document.getElementById("cForm");

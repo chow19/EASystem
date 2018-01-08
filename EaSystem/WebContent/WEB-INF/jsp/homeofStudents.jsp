@@ -29,6 +29,9 @@
 	<div id="personalDiv">
 		<a href="<%=request.getContextPath() %>/presonal">${account.username }</a>
 	</div>
+	<div id="exitDiv">
+		<a href="<%=request.getContextPath() %>/logout">退出</a>
+	</div>
 	<div id="coursesTableDiv">
 		<form id="selectweeks" action="<%=request.getContextPath() %>/students\selectweeks" method="post">
 			<select name="selected" onchange="selectedweek()" >

@@ -1,6 +1,6 @@
 package com.EaSystem.beans;
 
-import java.sql.Date;
+import java.util.Date;
 
 public class Class_Classroom {
 	Date class_date;

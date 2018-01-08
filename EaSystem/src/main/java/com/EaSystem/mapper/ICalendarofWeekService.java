@@ -15,4 +15,6 @@ public interface ICalendarofWeekService {
 	public List<CalendarofWeek> getExCalendarofWeek();
 	
 	public List<CalendarofWeek> getCalendarofWeek();
+	
+	public CalendarofWeek getWeek(@Param("weekname")int weekname);
 }

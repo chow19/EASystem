@@ -16,4 +16,6 @@ public interface ICourseService {
 	public int addExit(@Param("id")int id);
 	
 	public void downExit(@Param("id")int id);
+	
+	public void updateDescription(@Param("id")int id, @Param("description")String description);
 }

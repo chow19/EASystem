@@ -20,6 +20,9 @@
  	String searchTeacherName  = (String)request.getAttribute("searchTeacherName");
  %>
 <body>
+	<div id="backhome">
+		<button onclick="backhome()">返回</button>
+	</div>
 	<div id="selectCourseDiv">
 		  <table>
 		  	<tr>
@@ -124,6 +127,9 @@
 </body>
 
 <script type="text/javascript">
+	function backhome() {
+		window.location.href="<%=request.getContextPath() %>/login/role";
+	}
 	function submitSearch() {
 		var form = document.getElementById("searchForm")
 		form.submit();

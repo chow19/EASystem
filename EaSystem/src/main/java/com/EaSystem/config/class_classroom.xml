@@ -9,4 +9,12 @@
 	<select id="getClassandClassroom" resultType="com.EaSystem.beans.Class_Classroom">
 		select * from class_classroom where class_id=#{param1}
 	</select>
+	
+	<delete id="delClass_Classroom">
+		delete from class_classroom where class_id=#{param1}
+	</delete>
+	
+	<insert id="addClass_Classroom">
+		insert into class_classroom values(#{param1},#{param2},#{param3},#{param4});
+	</insert>
 </mapper>

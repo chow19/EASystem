@@ -147,6 +147,8 @@ insert into classorder (id,classtime) values
 (9,'18:30~19:20'),
 (10,'19:30~20:20');
 
+truncate classorder;
+
 alter table performance change final final int;
 
 alter table performance change credit credit int;

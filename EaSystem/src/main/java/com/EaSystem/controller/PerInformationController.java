@@ -10,7 +10,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.EaSystem.beans.Account;
@@ -74,6 +76,15 @@ public class PerInformationController {
 		}catch (Exception e) {
             e.printStackTrace();
         }
+		return modelAndView;
+	}
+	
+	@RequestMapping(value="/changeInforImg")
+	public ModelAndView changeInforImg(@ModelAttribute("Account")Account account, ModelMap model, @RequestParam("xlsfile")CommonsMultipartFile  jpgfile) {
+		ModelAndView modelAndView = new ModelAndView("redirect:/presonal");
+		
+		
+		
 		return modelAndView;
 	}
 }
